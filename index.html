@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Developer App Building: Complete Tools Landscape</title>
+    <meta name="description" content="A comprehensive guide to building applications without traditional coding - from no-code platforms to AI agent frameworks">
+    <meta property="og:title" content="Non-Developer App Building: Complete Tools Landscape">
+    <meta property="og:description" content="5 categories from easiest to most control — with 30+ tools, use cases, and resources">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        #root {
+            min-height: 100vh;
+        }
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            font-size: 13px;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        td {
+            font-size: 14px;
+        }
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // ============================================
+        // COMPREHENSIVE DATA
+        // ============================================
+        
+        const categories = [
+            {
+                id: 1,
+                name: 'No-Code Platforms',
+                tagline: 'Point, Click, Ship',
+                color: '#8b5cf6',
+                lightColor: '#ede9fe',
+                complexity: 'Easiest',
+                control: 'Limited',
+                timeToFirst: '< 1 hour',
+                learningCurve: '1-2 days',
+                bestFor: 'MVPs, internal tools, simple customer-facing apps where speed matters more than customization',
+                description: 'Visual builders for complete applications without writing code. Drag-and-drop interfaces for front-end, back-end logic, and data structure.',
+                typicalUsers: ['Citizen Developers', 'Small Business Owners', 'Product Managers', 'Startup Founders (MVPs)', 'Marketing Teams', 'Operations Managers'],
+                tools: [
+                    {
+                        name: 'Bubble',
+                        logo: '🫧',
+                        website: 'https://bubble.io',
+                        category: 'Full-stack web apps',
+                        pricing: 'Free tier, $29-349/mo',
+                        description: 'The most powerful no-code platform for building complete web applications with complex logic, user authentication, and database management.',
+                        useCases: [
+                            { title: 'Two-Sided Marketplace', detail: 'Build an Airbnb or Uber clone with buyer/seller accounts, listings, bookings, payments, and reviews' },
+                            { title: 'SaaS Dashboard', detail: 'Create a subscription product with user workspaces, team permissions, usage tracking, and Stripe billing' },
+                            { title: 'Internal Tool Suite', detail: 'Build custom CRM, project management, or inventory systems tailored to your exact workflow' },
+                            { title: 'Customer Portal', detail: 'Self-service portal where customers view orders, submit tickets, download invoices, and manage subscriptions' }
+                        ],
+                        sampleProject: {
+                            title: 'Channel Partner Portal',
+                            description: 'A portal where channel partners can register deals, track pipeline status, access marketing materials, view commission statements, and communicate with your partner team. Includes approval workflows, document management, and Salesforce sync.',
+                            features: ['Partner registration & onboarding', 'Deal registration with approval workflow', 'Commission tracking dashboard', 'Document library with access controls', 'Salesforce bi-directional sync']
+                        },
+                        resources: [
+                            { name: 'Bubble Academy', url: 'https://bubble.io/academy', type: 'Official Course', description: 'Free comprehensive course from basics to advanced' },
+                            { name: 'Bubble Manual', url: 'https://manual.bubble.io', type: 'Documentation', description: 'Complete reference documentation' },
+                            { name: 'Buildcamp', url: 'https://www.buildcamp.io', type: 'Paid Course', description: 'Intensive bootcamp-style training' },
+                            { name: 'Bubble Forum', url: 'https://forum.bubble.io', type: 'Community', description: 'Active community with 500k+ posts' },
+                            { name: 'r/bubble', url: 'https://reddit.com/r/bubble', type: 'Community', description: 'Reddit community for tips and showcase' }
+                        ],
+                        strengths: ['Most powerful no-code platform', 'Full database + backend logic', 'Large plugin ecosystem', 'Active community', 'Can handle complex apps'],
+                        limitations: ['Steeper learning curve for no-code', 'Can get expensive at scale', 'Vendor lock-in concerns', 'Performance can lag with complexity', 'Mobile apps require workarounds']
+                    },
+                    {
+                        name: 'Softr',
+                        logo: '⚡',
+                        website: 'https://www.softr.io',
+                        category: 'Airtable/Google Sheets powered apps',
+                        pricing: 'Free tier, $49-269/mo',
+                        description: 'Turn your Airtable bases or Google Sheets into beautiful, functional web apps and portals in minutes.',
+                        useCases: [
+                            { title: 'Client Portal', detail: 'Give clients a branded login to view their project status, deliverables, and invoices from your Airtable' },
+                            { title: 'Member Directory', detail: 'Searchable directory with profiles, filtering, and member-only content for communities or associations' },
+                            { title: 'Job Board', detail: 'Post listings, accept applications, and manage candidates—all backed by Airtable' },
+                            { title: 'Resource Library', detail: 'Organized, searchable content hub with categories, tags, and access permissions' }
+                        ],
+                        sampleProject: {
+                            title: 'Partner Deal Registration Portal',
+                            description: 'Partners log in to submit new deals, track existing deal status, view their pipeline metrics, and access sales enablement resources. Data syncs bidirectionally with your Airtable CRM.',
+                            features: ['SSO/password login', 'Deal submission forms', 'Pipeline dashboard with charts', 'Document downloads', 'Activity notifications']
+                        },
+                        resources: [
+                            { name: 'Softr University', url: 'https://www.softr.io/university', type: 'Official Course', description: 'Step-by-step video tutorials' },
+                            { name: 'Templates Gallery', url: 'https://www.softr.io/templates', type: 'Templates', description: '100+ ready-to-use templates' },
+                            { name: 'Softr Community', url: 'https://community.softr.io', type: 'Community', description: 'Official community forum' },
+                            { name: 'Softr YouTube', url: 'https://youtube.com/@sofaboriz', type: 'Video', description: 'Tutorial videos and webinars' }
+                        ],
+                        strengths: ['Fastest path from spreadsheet to app', 'Beautiful pre-built components', 'Great for portals and directories', 'Easy Airtable integration', 'No learning curve if you know Airtable'],
+                        limitations: ['Dependent on Airtable/Sheets', 'Less flexible than Bubble', 'Limited custom logic', 'Airtable row limits apply', 'Basic compared to full no-code platforms']
+                    },
+                    {
+                        name: 'Glide',
+                        logo: '📱',
+                        website: 'https://www.glideapps.com',
+                        category: 'Mobile-first apps from spreadsheets',
+                        pricing: 'Free tier, $25-249/mo',
+                        description: 'Create mobile-first apps from Google Sheets or Airtable. Perfect for field teams, inventory management, and operational apps.',
+                        useCases: [
+                            { title: 'Field Service App', detail: 'Technicians view assigned jobs, capture photos, collect signatures, update status—all synced to HQ' },
+                            { title: 'Inventory Scanner', detail: 'Barcode scanning, stock counts, location tracking, and reorder alerts' },
+                            { title: 'Event App', detail: 'Schedules, speaker profiles, networking features, and push notifications for attendees' },
+                            { title: 'Sales Catalog', detail: 'Mobile product catalog with search, favorites, and quote generation for field sales' }
+                        ],
+                        sampleProject: {
+                            title: 'Field Technician Mobile App',
+                            description: 'Service technicians receive job assignments, navigate to sites, document work with photos, capture customer signatures, log parts used, and sync everything back to the dispatch system.',
+                            features: ['Push notification for new jobs', 'GPS navigation integration', 'Offline photo capture', 'Digital signature collection', 'Parts inventory lookup']
+                        },
+                        resources: [
+                            { name: 'Glide Docs', url: 'https://docs.glideapps.com', type: 'Documentation', description: 'Complete platform documentation' },
+                            { name: 'Glide Community', url: 'https://community.glideapps.com', type: 'Community', description: 'Active user community' },
+                            { name: 'Glide YouTube', url: 'https://youtube.com/@glaboratory', type: 'Video', description: 'Official tutorials and tips' },
+                            { name: 'Glide Templates', url: 'https://www.glideapps.com/templates', type: 'Templates', description: 'Starter templates' }
+                        ],
+                        strengths: ['Best mobile experience', 'Spreadsheet-native', 'Fast to prototype', 'Great offline support', 'Easy to learn'],
+                        limitations: ['Mobile-first (web secondary)', 'Limited complex logic', 'Data size limits', 'Less suitable for complex workflows', 'Tied to spreadsheet structure']
+                    },
+                    {
+                        name: 'Webflow',
+                        logo: '🌊',
+                        website: 'https://webflow.com',
+                        category: 'Professional marketing websites',
+                        pricing: 'Free tier, $14-212/mo',
+                        description: 'Design and build production-grade, responsive websites with a visual canvas that generates clean code. Includes CMS and e-commerce.',
+                        useCases: [
+                            { title: 'Marketing Website', detail: 'Full company website with dynamic pages, blog, case studies, and lead capture forms' },
+                            { title: 'Landing Pages', detail: 'High-converting landing pages with A/B testing and form integrations' },
+                            { title: 'Content Hub', detail: 'Blog, resource library, or documentation site with powerful CMS' },
+                            { title: 'Portfolio Site', detail: 'Showcase work with beautiful galleries, animations, and client testimonials' }
+                        ],
+                        sampleProject: {
+                            title: 'B2B SaaS Marketing Site',
+                            description: 'Complete marketing website with homepage, product pages, pricing, blog with categories, case studies with filterable industry tags, careers page with job listings, and integrated HubSpot forms.',
+                            features: ['Responsive design system', 'CMS-powered blog & case studies', 'Dynamic pricing tables', 'HubSpot form integration', 'SEO optimization']
+                        },
+                        resources: [
+                            { name: 'Webflow University', url: 'https://university.webflow.com', type: 'Official Course', description: 'Comprehensive free courses' },
+                            { name: 'Client-First System', url: 'https://finsweet.com/client-first', type: 'Framework', description: 'Professional class naming system' },
+                            { name: 'Flowbase', url: 'https://www.flowbase.co', type: 'Templates', description: 'Premium templates and components' },
+                            { name: 'Webflow Blog', url: 'https://webflow.com/blog', type: 'Blog', description: 'Tips, updates, and inspiration' }
+                        ],
+                        strengths: ['Production-grade websites', 'Full CSS control', 'Excellent CMS', 'Clean code output', 'Great for designers'],
+                        limitations: ['Not for web applications', 'Complex for beginners', 'Hosting adds cost', 'E-commerce is limited', 'CMS has learning curve']
+                    },
+                    {
+                        name: 'Framer',
+                        logo: '🎨',
+                        website: 'https://www.framer.com',
+                        category: 'Design-to-website with AI',
+                        pricing: 'Free tier, $5-20/mo per site',
+                        description: 'Design beautiful, animated websites with AI assistance. Great for portfolios, landing pages, and marketing sites with stunning interactions.',
+                        useCases: [
+                            { title: 'Product Launch Page', detail: 'Animated, high-impact landing page with scroll effects, video backgrounds, and waitlist signup' },
+                            { title: 'Portfolio Website', detail: 'Designer or agency portfolio with smooth transitions and project showcases' },
+                            { title: 'Startup Website', detail: 'Modern, minimal site that looks like a well-funded startup' },
+                            { title: 'Event Page', detail: 'Single-page event site with countdown, speaker profiles, and registration' }
+                        ],
+                        sampleProject: {
+                            title: 'AI Product Launch Page',
+                            description: 'Stunning product launch page with animated hero section, feature showcases with scroll-triggered animations, pricing comparison, testimonial carousel, and integrated waitlist with email capture.',
+                            features: ['AI-generated initial design', 'Scroll-triggered animations', 'Responsive breakpoints', 'Form integrations', 'Custom interactions']
+                        },
+                        resources: [
+                            { name: 'Framer Academy', url: 'https://www.framer.com/academy', type: 'Official Course', description: 'Learn Framer from basics' },
+                            { name: 'Framer Templates', url: 'https://www.framer.com/templates', type: 'Templates', description: 'Professional starter templates' },
+                            { name: 'Framer Community', url: 'https://www.framer.community', type: 'Community', description: 'Discord and forum' }
+                        ],
+                        strengths: ['Best animations/interactions', 'AI site generation', 'Designer-friendly interface', 'Fast publishing', 'Great templates'],
+                        limitations: ['Limited backend capabilities', 'Less mature ecosystem', 'Simpler CMS than Webflow', 'Not for complex sites', 'Newer platform']
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: 'Low-Code / Automation',
+                tagline: 'Connect Everything',
+                color: '#f59e0b',
+                lightColor: '#fef3c7',
+                complexity: 'Easy',
+                control: 'Moderate',
+                timeToFirst: '< 30 min',
+                learningCurve: '1 week',
+                bestFor: 'Process automation, data synchronization between systems, operational efficiency, reducing manual work',
+                description: 'Visual workflow builders that connect different software services and automate repetitive tasks. If-this-then-that logic with branching, loops, and data transformation.',
+                typicalUsers: ['Operations Teams', 'RevOps / Sales Ops', 'HR / Finance Admins', 'Marketing Operations', 'Business Analysts', 'IT Teams'],
+                tools: [
+                    {
+                        name: 'Zapier',
+                        logo: '⚡',
+                        website: 'https://zapier.com',
+                        category: 'Simple automations, most integrations',
+                        pricing: 'Free (100 tasks/mo), $19.99-799/mo',
+                        description: 'The most popular automation platform with 6,000+ app integrations. Best for straightforward automations with minimal learning curve.',
+                        useCases: [
+                            { title: 'Lead Routing', detail: 'New form submission → enrich with Clearbit → route to Slack channel by region → create Salesforce lead → add to nurture sequence' },
+                            { title: 'Customer Onboarding', detail: 'New customer in Stripe → create accounts in all tools → send welcome email → notify success team → schedule kickoff' },
+                            { title: 'Content Publishing', detail: 'New WordPress post → share to Twitter, LinkedIn, Facebook → add to email newsletter → log to analytics sheet' },
+                            { title: 'Support Escalation', detail: 'Zendesk ticket tagged urgent → Slack alert to on-call → create Jira issue → start SLA timer' }
+                        ],
+                        sampleProject: {
+                            title: 'Inbound Lead Processing Pipeline',
+                            description: 'Automatically process every inbound lead: capture from multiple sources, enrich with company data, score based on criteria, route to appropriate sales rep, create CRM records, and trigger personalized outreach.',
+                            features: ['Multi-source lead capture', 'Clearbit/Apollo enrichment', 'Lead scoring logic', 'Round-robin assignment', 'Slack notifications', 'CRM record creation']
+                        },
+                        resources: [
+                            { name: 'Zapier Learn', url: 'https://zapier.com/learn', type: 'Learning Hub', description: 'Courses, guides, and automation ideas' },
+                            { name: 'Zapier University', url: 'https://zapier.com/university', type: 'Certification', description: 'Official certification program' },
+                            { name: 'App Directory', url: 'https://zapier.com/apps', type: 'Integrations', description: '6,000+ app integrations' },
+                            { name: 'Zapier Community', url: 'https://community.zapier.com', type: 'Community', description: 'User forum and support' }
+                        ],
+                        strengths: ['Easiest to learn', '6,000+ app integrations', 'Excellent support', 'Reliable execution', 'Great documentation'],
+                        limitations: ['Limited branching/logic', 'Gets expensive at volume', 'No self-hosting option', 'Simple error handling', 'Less powerful than Make']
+                    },
+                    {
+                        name: 'Make (Integromat)',
+                        logo: '🔮',
+                        website: 'https://www.make.com',
+                        category: 'Complex workflows with visual debugging',
+                        pricing: 'Free (1,000 ops/mo), $9-299/mo',
+                        description: 'More powerful than Zapier with visual scenario builder, complex branching, error handling, and better pricing for high-volume automations.',
+                        useCases: [
+                            { title: 'Document Processing', detail: 'Watch email → extract PDF attachment → OCR with AI → parse invoice fields → validate against PO → route for approval → update accounting' },
+                            { title: 'Multi-Branch Approval', detail: 'Request submitted → check amount thresholds → route to appropriate approvers → handle rejections → escalate timeouts → complete processing' },
+                            { title: 'Data Transformation Pipeline', detail: 'Pull from API → transform/clean data → split into batches → update multiple systems → aggregate results → send report' },
+                            { title: 'E-commerce Sync', detail: 'Shopify order → check inventory across warehouses → route to fulfillment → update stock levels → sync to accounting → notify customer' }
+                        ],
+                        sampleProject: {
+                            title: 'AI-Powered Invoice Processing',
+                            description: 'Automatically process incoming invoices: monitor email/Dropbox for new invoices, extract data using AI/OCR, validate against purchase orders, route for approval based on amount and department, update accounting system, and archive.',
+                            features: ['Multi-source monitoring', 'AI/OCR extraction', 'PO matching logic', 'Approval routing', 'Exception handling', 'Audit trail']
+                        },
+                        resources: [
+                            { name: 'Make Academy', url: 'https://academy.make.com', type: 'Official Course', description: 'Free comprehensive courses' },
+                            { name: 'Make Community', url: 'https://community.make.com', type: 'Community', description: 'Active user forum' },
+                            { name: 'Make Templates', url: 'https://www.make.com/en/templates', type: 'Templates', description: '1,000+ scenario templates' },
+                            { name: 'Make Blog', url: 'https://www.make.com/en/blog', type: 'Blog', description: 'Tips and use cases' }
+                        ],
+                        strengths: ['Visual debugging', 'Complex branching logic', 'Better pricing for volume', 'Powerful data transformation', 'Error handling/retry'],
+                        limitations: ['Steeper learning curve', 'Fewer native integrations than Zapier', 'UI can be overwhelming', 'Documentation gaps', 'Occasional reliability issues']
+                    },
+                    {
+                        name: 'n8n',
+                        logo: '🔄',
+                        website: 'https://n8n.io',
+                        category: 'Self-hostable, developer-friendly',
+                        pricing: 'Free (self-host), €20-200/mo (cloud)',
+                        description: 'Fair-code automation platform that can be self-hosted. Includes code nodes for custom logic, making it ideal for technical teams and sensitive data.',
+                        useCases: [
+                            { title: 'Security Log Processing', detail: 'Ingest logs from multiple sources → normalize to OCSF schema → enrich with threat intel → detect IOCs → alert security team → archive to SIEM' },
+                            { title: 'On-Premise Data Sync', detail: 'Connect to internal databases → transform data → sync to cloud services → all within your network' },
+                            { title: 'Custom API Orchestration', detail: 'Chain multiple internal APIs → add custom transformation logic → handle complex authentication → retry with backoff' },
+                            { title: 'DevOps Automation', detail: 'GitHub webhook → run tests → deploy to staging → notify team → wait for approval → deploy to production' }
+                        ],
+                        sampleProject: {
+                            title: 'Security Log Normalization Pipeline',
+                            description: 'Process security logs from multiple vendors, normalize to OCSF format, enrich with threat intelligence, detect indicators of compromise, and route alerts—all self-hosted for data sovereignty.',
+                            features: ['Multi-vendor log ingestion', 'OCSF normalization', 'Threat intel enrichment', 'IOC detection rules', 'Alert routing', 'Self-hosted deployment']
+                        },
+                        resources: [
+                            { name: 'n8n Docs', url: 'https://docs.n8n.io', type: 'Documentation', description: 'Complete platform docs' },
+                            { name: 'n8n Community', url: 'https://community.n8n.io', type: 'Community', description: 'Active forum' },
+                            { name: 'n8n Workflows', url: 'https://n8n.io/workflows', type: 'Templates', description: 'Community workflow library' },
+                            { name: 'n8n GitHub', url: 'https://github.com/n8n-io/n8n', type: 'Source', description: 'Open source repository' }
+                        ],
+                        strengths: ['Self-hostable', 'Code nodes for custom logic', 'Fair-code license', 'Great for sensitive data', 'Active open-source community'],
+                        limitations: ['Requires hosting knowledge for self-host', 'Smaller integration ecosystem', 'Less polished UI', 'Fewer pre-built templates', 'Support varies']
+                    },
+                    {
+                        name: 'Retool',
+                        logo: '🛠️',
+                        website: 'https://retool.com',
+                        category: 'Internal tools and admin panels',
+                        pricing: 'Free (5 users), $10-50/user/mo',
+                        description: 'Build internal tools and admin panels that connect directly to your databases and APIs. Drag-and-drop UI with SQL and JavaScript support.',
+                        useCases: [
+                            { title: 'Customer Admin Panel', detail: 'Support team tool to view customer data, trigger actions, issue refunds, and manage subscriptions—all from one interface' },
+                            { title: 'Operations Dashboard', detail: 'Real-time visibility into orders, inventory, fulfillment status with ability to take actions' },
+                            { title: 'Data Management Tool', detail: 'CRUD interface for database tables with validation, audit logging, and role-based permissions' },
+                            { title: 'Approval Workflows', detail: 'Custom approval queues with data display, action buttons, and audit trails' }
+                        ],
+                        sampleProject: {
+                            title: 'Customer Success Command Center',
+                            description: 'Internal tool for CS team: unified view of customer health scores, usage metrics, support tickets, billing status, with ability to trigger actions like extending trials, issuing credits, or escalating issues.',
+                            features: ['Multi-database connections', 'Real-time data refresh', 'Action buttons with confirmations', 'Role-based access', 'Audit logging', 'Slack integration']
+                        },
+                        resources: [
+                            { name: 'Retool Docs', url: 'https://docs.retool.com', type: 'Documentation', description: 'Comprehensive documentation' },
+                            { name: 'Retool Community', url: 'https://community.retool.com', type: 'Community', description: 'User forum' },
+                            { name: 'Retool Templates', url: 'https://retool.com/templates', type: 'Templates', description: 'Starter templates' },
+                            { name: 'Retool Blog', url: 'https://retool.com/blog', type: 'Blog', description: 'Use cases and tutorials' }
+                        ],
+                        strengths: ['Direct database connections', 'Powerful for internal tools', 'Good security model', 'SQL and JS support', 'Fast to build'],
+                        limitations: ['Internal tools only (not customer-facing)', 'Per-user pricing adds up', 'Learning curve for complex apps', 'Limited mobile support', 'Can feel clunky']
+                    },
+                    {
+                        name: 'Power Automate',
+                        logo: '🔷',
+                        website: 'https://powerautomate.microsoft.com',
+                        category: 'Microsoft 365 ecosystem automation',
+                        pricing: 'Included in M365, $15-40/user/mo standalone',
+                        description: 'Microsoft\'s automation platform with deep integration into Office 365, Dynamics, SharePoint, and Teams. Best for organizations already in the Microsoft ecosystem.',
+                        useCases: [
+                            { title: 'Document Approval', detail: 'SharePoint upload → Teams approval request → e-signature via DocuSign → archive to OneDrive → update tracking list' },
+                            { title: 'Employee Onboarding', detail: 'New hire in HR system → create M365 account → add to Teams → assign licenses → send welcome email → create tasks' },
+                            { title: 'Expense Processing', detail: 'Form submission → manager approval in Teams → finance review → update Dynamics → trigger reimbursement' },
+                            { title: 'Report Distribution', detail: 'Scheduled Power BI refresh → export to Excel → email to stakeholders → archive to SharePoint' }
+                        ],
+                        sampleProject: {
+                            title: 'Contract Approval Workflow',
+                            description: 'End-to-end contract processing: submission via Forms, document storage in SharePoint, multi-level approval via Teams, e-signature collection, final archival, and Dynamics 365 record creation.',
+                            features: ['SharePoint document management', 'Teams adaptive cards', 'Multi-level approvals', 'DocuSign integration', 'Dynamics 365 sync', 'Power BI reporting']
+                        },
+                        resources: [
+                            { name: 'Power Automate Docs', url: 'https://learn.microsoft.com/power-automate', type: 'Documentation', description: 'Official Microsoft docs' },
+                            { name: 'Power Automate Community', url: 'https://powerusers.microsoft.com/t5/Power-Automate/ct-p/MPACommunity', type: 'Community', description: 'Microsoft community forum' },
+                            { name: 'Power Automate Training', url: 'https://learn.microsoft.com/training/powerplatform/power-automate', type: 'Training', description: 'Free Microsoft training' }
+                        ],
+                        strengths: ['Best Microsoft integration', 'Enterprise-ready', 'Included in M365', 'RPA capabilities (desktop flows)', 'Compliance features'],
+                        limitations: ['Microsoft-centric', 'Complex licensing', 'Less intuitive UI than competitors', 'Limited non-Microsoft integrations', 'Can be slow']
+                    },
+                    {
+                        name: 'AppSheet',
+                        logo: '📊',
+                        website: 'https://about.appsheet.com',
+                        category: 'Google Workspace apps',
+                        pricing: 'Free tier, $5-10/user/mo',
+                        description: 'Google\'s no-code platform for building mobile and web apps from Google Sheets, Excel, or databases. Strong in forms, workflows, and field apps.',
+                        useCases: [
+                            { title: 'Inspection App', detail: 'Field inspectors complete checklists, capture photos, collect signatures, auto-generate reports' },
+                            { title: 'Inventory Management', detail: 'Barcode scanning, stock tracking, low-stock alerts, reorder workflows' },
+                            { title: 'Approval Workflows', detail: 'Request submission, multi-level approval chains, status tracking, notifications' },
+                            { title: 'CRM Lite', detail: 'Simple customer tracking, activity logging, task management, email integration' }
+                        ],
+                        sampleProject: {
+                            title: 'Field Inspection & Reporting App',
+                            description: 'Inspectors conduct site audits using mobile app: complete dynamic checklists, capture geotagged photos, record measurements, collect signatures, auto-generate PDF reports, and sync to Google Sheets.',
+                            features: ['Offline capability', 'Photo capture with markup', 'GPS location logging', 'Digital signatures', 'PDF report generation', 'Google Sheets sync']
+                        },
+                        resources: [
+                            { name: 'AppSheet Help', url: 'https://support.google.com/appsheet', type: 'Documentation', description: 'Official help center' },
+                            { name: 'AppSheet Community', url: 'https://community.appsheet.com', type: 'Community', description: 'User community forum' },
+                            { name: 'AppSheet Templates', url: 'https://www.appsheet.com/templates', type: 'Templates', description: 'Starter app templates' }
+                        ],
+                        strengths: ['Google ecosystem native', 'Great mobile apps', 'Affordable pricing', 'Good offline support', 'Easy spreadsheet integration'],
+                        limitations: ['Limited web app capabilities', 'Less flexible UI', 'Google-centric', 'Complex expressions syntax', 'Limited third-party integrations']
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: 'AI Agent Builders',
+                tagline: 'Describe It, Deploy It',
+                color: '#10b981',
+                lightColor: '#d1fae5',
+                complexity: 'Easy-Medium',
+                control: 'Moderate',
+                timeToFirst: '< 15 min',
+                learningCurve: '1-2 weeks',
+                bestFor: 'Research tasks, content generation, customer interactions, repetitive knowledge work, chat experiences',
+                description: 'Build AI agents that can reason, plan, and execute multi-step tasks through natural language prompting combined with tool and skill orchestration.',
+                typicalUsers: ['Executive Assistants', 'Data Analysts', 'Researchers', 'Support/Sales Teams', 'Content Teams', 'Marketing Ops'],
+                tools: [
+                    {
+                        name: 'OpenAI GPTs',
+                        logo: '🤖',
+                        website: 'https://chat.openai.com/gpts',
+                        category: 'Custom ChatGPT experiences',
+                        pricing: 'ChatGPT Plus $20/mo required',
+                        description: 'Create custom versions of ChatGPT with specific instructions, knowledge, and capabilities. The easiest entry point into AI agents.',
+                        useCases: [
+                            { title: 'Knowledge Base Q&A', detail: 'Upload company docs → employees ask questions → GPT answers with citations from your materials' },
+                            { title: 'Writing Assistant', detail: 'Custom GPT trained on your brand voice, style guide, and templates for consistent content creation' },
+                            { title: 'Domain Expert', detail: 'Security policy advisor, legal FAQ bot, or technical support guide with specialized knowledge' },
+                            { title: 'Workflow Helper', detail: 'Guide users through complex processes with step-by-step instructions and validation' }
+                        ],
+                        sampleProject: {
+                            title: 'Security Policy Advisor GPT',
+                            description: 'Upload your security policies, compliance documentation, and procedures. Employees ask questions like "What\'s our password policy?" or "How do I report a phishing email?" and get accurate answers citing specific policy sections.',
+                            features: ['Document knowledge base', 'Citation of sources', 'Custom instructions', 'Conversation starters', 'Web browsing for updates']
+                        },
+                        resources: [
+                            { name: 'GPT Builder Guide', url: 'https://help.openai.com/en/articles/8554397-creating-a-gpt', type: 'Official Guide', description: 'How to create custom GPTs' },
+                            { name: 'GPT Store', url: 'https://chat.openai.com/gpts', type: 'Examples', description: 'Browse published GPTs' },
+                            { name: 'OpenAI Cookbook', url: 'https://cookbook.openai.com', type: 'Patterns', description: 'Advanced prompting patterns' },
+                            { name: 'Actions Documentation', url: 'https://platform.openai.com/docs/actions', type: 'Documentation', description: 'Connect GPTs to external APIs' }
+                        ],
+                        strengths: ['Easiest entry point', 'Large ecosystem', 'Built-in tools (code, browse, DALL-E)', 'No coding required', 'Quick to create'],
+                        limitations: ['Limited customization', 'No external integrations without Actions', 'ChatGPT dependency', 'Limited control over behavior', 'Knowledge cutoff issues']
+                    },
+                    {
+                        name: 'Lindy',
+                        logo: '🎀',
+                        website: 'https://www.lindy.ai',
+                        category: 'AI executive assistant',
+                        pricing: '$49-299/mo',
+                        description: 'Build AI employees that can handle email, calendar, research, and multi-step workflows. Pre-built templates for common assistant tasks.',
+                        useCases: [
+                            { title: 'Meeting Scheduler', detail: 'AI handles scheduling emails, finds available times, sends calendar invites, handles rescheduling' },
+                            { title: 'Email Triage', detail: 'Monitor inbox, categorize emails, draft responses, flag urgent items, summarize daily digest' },
+                            { title: 'Research Assistant', detail: 'Given a topic, search the web, compile findings, summarize key points, create briefing document' },
+                            { title: 'Sales Development', detail: 'Research prospects, personalize outreach, follow up on sequences, book meetings' }
+                        ],
+                        sampleProject: {
+                            title: 'Sales Research & Outreach Agent',
+                            description: 'AI assistant that monitors for new leads, researches their company and role, finds relevant news and triggers, drafts personalized outreach, and schedules follow-ups based on engagement.',
+                            features: ['Lead monitoring', 'Company research', 'News/trigger identification', 'Personalized email drafts', 'Calendar integration', 'Follow-up sequences']
+                        },
+                        resources: [
+                            { name: 'Lindy Docs', url: 'https://docs.lindy.ai', type: 'Documentation', description: 'Platform documentation' },
+                            { name: 'Lindy Templates', url: 'https://www.lindy.ai/templates', type: 'Templates', description: 'Pre-built agent templates' },
+                            { name: 'Lindy YouTube', url: 'https://youtube.com/@lindyai', type: 'Video', description: 'Tutorials and demos' },
+                            { name: 'Lindy Blog', url: 'https://www.lindy.ai/blog', type: 'Blog', description: 'Use cases and updates' }
+                        ],
+                        strengths: ['Pre-built agent templates', 'Calendar/email native', 'Production-ready', 'Good for assistants', 'Visual builder'],
+                        limitations: ['Pricey for individuals', 'Less customizable than frameworks', 'Newer platform', 'Limited to supported integrations', 'Can be unpredictable']
+                    },
+                    {
+                        name: 'Relevance AI',
+                        logo: '🔗',
+                        website: 'https://relevanceai.com',
+                        category: 'Enterprise AI agents and workflows',
+                        pricing: 'Free tier, custom enterprise pricing',
+                        description: 'Build and deploy AI agents that can be chained together for complex workflows. Strong enterprise features and tool ecosystem.',
+                        useCases: [
+                            { title: 'Sales Research Agent', detail: 'Take company name → scrape website → analyze financials → identify decision makers → generate account brief' },
+                            { title: 'Document Processing', detail: 'Ingest documents → extract structured data → validate against rules → route for review → update systems' },
+                            { title: 'Due Diligence', detail: 'Multi-agent workflow: company research, financial analysis, risk assessment, competitive analysis, report generation' },
+                            { title: 'Customer Support', detail: 'Understand query → search knowledge base → draft response → escalate if needed → track resolution' }
+                        ],
+                        sampleProject: {
+                            title: 'M&A Due Diligence Agent System',
+                            description: 'Multi-agent system for preliminary due diligence: one agent researches target company, another analyzes financials, another assesses market position, and a final agent synthesizes everything into an investment memo.',
+                            features: ['Multi-agent orchestration', 'Web research tools', 'Document analysis', 'Financial data extraction', 'Report generation', 'Human review workflow']
+                        },
+                        resources: [
+                            { name: 'Relevance Docs', url: 'https://docs.relevanceai.com', type: 'Documentation', description: 'Platform documentation' },
+                            { name: 'Agent Templates', url: 'https://relevanceai.com/templates', type: 'Templates', description: 'Pre-built agents' },
+                            { name: 'Relevance Academy', url: 'https://relevanceai.com/academy', type: 'Course', description: 'Learning resources' },
+                            { name: 'Relevance Community', url: 'https://relevanceai.com/community', type: 'Community', description: 'User community' }
+                        ],
+                        strengths: ['Chain agents together', 'Enterprise features', 'Good tool ecosystem', 'Strong for research', 'API access'],
+                        limitations: ['Learning curve', 'Enterprise focus', 'Pricing can be opaque', 'Complex for simple tasks', 'Requires iteration']
+                    },
+                    {
+                        name: 'MindStudio',
+                        logo: '🧠',
+                        website: 'https://mindstudio.ai',
+                        category: 'Visual AI app builder',
+                        pricing: 'Free tier, $20-100/mo',
+                        description: 'Visual builder for AI applications with branching conversation flows. Good for creating chatbots, interactive guides, and AI-powered tools.',
+                        useCases: [
+                            { title: 'Customer Support Bot', detail: 'Guide customers through troubleshooting steps, answer FAQs, escalate to human when needed' },
+                            { title: 'Product Recommender', detail: 'Ask qualifying questions → analyze needs → search product catalog → explain recommendations' },
+                            { title: 'Onboarding Flow', detail: 'Interactive onboarding that adapts based on user responses and role' },
+                            { title: 'Assessment Tool', detail: 'Guided assessment with scoring, recommendations, and personalized report' }
+                        ],
+                        sampleProject: {
+                            title: 'Product Recommendation Assistant',
+                            description: 'Interactive AI that helps customers find the right product: asks about needs, budget, and preferences, searches your catalog, explains trade-offs, and provides personalized recommendations with reasoning.',
+                            features: ['Branching conversations', 'Product catalog search', 'Personalized recommendations', 'Explanation generation', 'Lead capture', 'Analytics']
+                        },
+                        resources: [
+                            { name: 'MindStudio Docs', url: 'https://docs.mindstudio.ai', type: 'Documentation', description: 'Platform documentation' },
+                            { name: 'MindStudio Community', url: 'https://community.mindstudio.ai', type: 'Community', description: 'User community' },
+                            { name: 'MindStudio Templates', url: 'https://mindstudio.ai/templates', type: 'Templates', description: 'Starter templates' }
+                        ],
+                        strengths: ['Visual flow builder', 'Easy branching logic', 'Good for chat experiences', 'Quick to prototype', 'Embeddable'],
+                        limitations: ['Newer platform', 'Smaller community', 'Limited integrations', 'Can feel limited', 'Less enterprise features']
+                    },
+                    {
+                        name: 'Botpress',
+                        logo: '💬',
+                        website: 'https://botpress.com',
+                        category: 'Conversational AI platform',
+                        pricing: 'Free tier, usage-based pricing',
+                        description: 'Full-featured chatbot platform with strong NLU, multi-channel deployment, and self-hosting option. Good for complex conversational experiences.',
+                        useCases: [
+                            { title: 'Customer Service Bot', detail: 'Multi-channel support bot with intent recognition, knowledge base search, ticket creation, and handoff' },
+                            { title: 'Lead Qualification', detail: 'Engage website visitors, qualify leads through conversation, book meetings, sync to CRM' },
+                            { title: 'IT Helpdesk', detail: 'Password resets, common troubleshooting, ticket creation, status checks' },
+                            { title: 'HR Assistant', detail: 'Answer policy questions, help with time-off requests, benefits information, onboarding guidance' }
+                        ],
+                        sampleProject: {
+                            title: 'IT Support Virtual Agent',
+                            description: 'AI-powered IT helpdesk: understand issues, attempt automated resolution (password resets, common fixes), create tickets when needed, provide status updates, and escalate to human support.',
+                            features: ['Intent recognition', 'Knowledge base integration', 'Ticket system integration', 'Automated remediation', 'Human handoff', 'Multi-channel (web, Slack, Teams)']
+                        },
+                        resources: [
+                            { name: 'Botpress Docs', url: 'https://botpress.com/docs', type: 'Documentation', description: 'Platform documentation' },
+                            { name: 'Botpress Academy', url: 'https://botpress.com/academy', type: 'Course', description: 'Learning resources' },
+                            { name: 'Botpress Discord', url: 'https://discord.gg/botpress', type: 'Community', description: 'Active Discord community' },
+                            { name: 'Botpress GitHub', url: 'https://github.com/botpress/botpress', type: 'Source', description: 'Open source repository' }
+                        ],
+                        strengths: ['Self-hostable option', 'Strong NLU capabilities', 'Multi-channel support', 'Mature platform', 'Open source core'],
+                        limitations: ['Chat-focused (not general agents)', 'Complex for simple use cases', 'Learning curve', 'Can be overwhelming', 'NLU training needed']
+                    },
+                    {
+                        name: 'Voiceflow',
+                        logo: '🎙️',
+                        website: 'https://www.voiceflow.com',
+                        category: 'Voice + chat design platform',
+                        pricing: 'Free tier, $40-625/mo',
+                        description: 'Design, prototype, and launch conversational AI for both voice and chat. Strong collaboration features and enterprise capabilities.',
+                        useCases: [
+                            { title: 'Voice Assistant', detail: 'Alexa skill or Google Action for customer self-service, product information, or brand experience' },
+                            { title: 'IVR Replacement', detail: 'AI-powered phone system that understands natural language and routes or resolves calls' },
+                            { title: 'Multi-Modal Bot', detail: 'Consistent experience across web chat, voice, and messaging platforms' },
+                            { title: 'In-App Assistant', detail: 'Embedded help assistant within your product for onboarding and support' }
+                        ],
+                        sampleProject: {
+                            title: 'Omnichannel Customer Assistant',
+                            description: 'Single conversational AI deployed across web chat, phone, and Alexa. Handles product questions, order status, returns, and support—consistent experience everywhere.',
+                            features: ['Voice + chat', 'NLU training', 'API integrations', 'Knowledge base', 'Analytics', 'Team collaboration']
+                        },
+                        resources: [
+                            { name: 'Voiceflow Docs', url: 'https://developer.voiceflow.com', type: 'Documentation', description: 'Developer documentation' },
+                            { name: 'Voiceflow University', url: 'https://learn.voiceflow.com', type: 'Course', description: 'Learning platform' },
+                            { name: 'Voiceflow Community', url: 'https://community.voiceflow.com', type: 'Community', description: 'User community' }
+                        ],
+                        strengths: ['Voice + chat in one', 'Great collaboration', 'Enterprise features', 'Strong design tools', 'Good analytics'],
+                        limitations: ['Voice focus may be overkill', 'Can be expensive', 'Complexity for simple bots', 'Learning curve', 'Some features enterprise-only']
+                    }
+                ]
+            },
+            {
+                id: 4,
+                name: 'AI-Assisted Coding',
+                tagline: 'Vibe Code → Real Code',
+                color: '#3b82f6',
+                lightColor: '#dbeafe',
+                complexity: 'Medium',
+                control: 'High',
+                timeToFirst: '< 5 min',
+                learningCurve: '2-4 weeks',
+                bestFor: 'Custom applications, unique requirements, learning to code, full control over features and deployment',
+                description: 'Use AI to write, debug, and iterate on production code through conversation. Describe what you want, get working code, refine through feedback.',
+                typicalUsers: ['Technical Founders', 'Product Managers (technical)', 'Designers Who Code', 'Domain Experts', 'Analysts', 'Career Switchers'],
+                tools: [
+                    {
+                        name: 'Claude.ai (Artifacts)',
+                        logo: '🎭',
+                        website: 'https://claude.ai',
+                        category: 'In-chat prototyping and code generation',
+                        pricing: 'Free tier, $20/mo Pro, $100/mo Max',
+                        description: 'Generate working React components, HTML pages, and visualizations directly in chat. Great for rapid prototyping and exploring ideas.',
+                        useCases: [
+                            { title: 'Quick Prototypes', detail: 'Describe a UI → get working React component → iterate through conversation → export code' },
+                            { title: 'Data Visualizations', detail: 'Paste data → generate interactive charts → customize styling → embed or export' },
+                            { title: 'Interactive Tools', detail: 'Calculators, form builders, configuration tools—working in minutes' },
+                            { title: 'Learning by Building', detail: 'Explore concepts by building working examples, ask questions about the code' }
+                        ],
+                        sampleProject: {
+                            title: 'Security Metrics Dashboard',
+                            description: 'Paste your security metrics CSV → Claude generates an interactive dashboard with charts for vulnerability trends, MTTR, coverage metrics, and risk scores → iterate on styling and features → export the React component.',
+                            features: ['CSV data parsing', 'Interactive charts', 'Filtering and sorting', 'Export to React', 'Real-time preview', 'Iterative refinement']
+                        },
+                        resources: [
+                            { name: 'Claude Docs', url: 'https://docs.anthropic.com', type: 'Documentation', description: 'Official documentation' },
+                            { name: 'Anthropic Cookbook', url: 'https://github.com/anthropics/anthropic-cookbook', type: 'Examples', description: 'Patterns and examples' },
+                            { name: 'Prompt Engineering Guide', url: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering', type: 'Guide', description: 'Best practices for prompting' }
+                        ],
+                        strengths: ['Instant visualization', 'Great for exploration', 'No setup required', 'Strong reasoning', 'Good for learning'],
+                        limitations: ['Single-file artifacts', 'No persistent storage', 'Limited to browser runtime', 'No backend capabilities', 'Export required for production']
+                    },
+                    {
+                        name: 'Cursor',
+                        logo: '📍',
+                        website: 'https://cursor.sh',
+                        category: 'AI-native IDE (VS Code fork)',
+                        pricing: 'Free tier, $20/mo Pro, $40/mo Business',
+                        description: 'Full IDE with AI deeply integrated. Chat with your codebase, get multi-file edits, and use AI to navigate and modify complex projects.',
+                        useCases: [
+                            { title: 'Full Application Development', detail: 'Build complete apps through conversation: describe features → AI implements across files → test → iterate' },
+                            { title: 'Codebase Refactoring', detail: 'Explain desired changes → AI modifies multiple files consistently → review and approve' },
+                            { title: 'Learning New Frameworks', detail: 'Ask questions about unfamiliar code, get explanations, have AI write idiomatic code' },
+                            { title: 'Bug Fixing', detail: 'Paste error → AI finds the issue → suggests fix → applies across relevant files' }
+                        ],
+                        sampleProject: {
+                            title: 'FastAPI Microservice',
+                            description: 'Build a complete API service: describe endpoints → Cursor generates FastAPI routes, Pydantic models, database integration → add authentication → write tests → set up Docker deployment.',
+                            features: ['Multi-file generation', 'Codebase awareness', 'Test generation', 'Refactoring', 'Documentation', 'Git integration']
+                        },
+                        resources: [
+                            { name: 'Cursor Docs', url: 'https://docs.cursor.com', type: 'Documentation', description: 'Official documentation' },
+                            { name: 'Cursor Forum', url: 'https://forum.cursor.com', type: 'Community', description: 'User forum' },
+                            { name: 'Cursor Directory', url: 'https://cursor.directory', type: 'Resources', description: 'Rules and prompt templates' },
+                            { name: 'Cursor YouTube', url: 'https://youtube.com/@cursor-ai', type: 'Video', description: 'Tutorials and tips' }
+                        ],
+                        strengths: ['Full IDE experience', 'Codebase-aware AI', 'Multi-file editing', 'Great for real projects', 'Active development'],
+                        limitations: ['Requires some coding knowledge', 'Subscription cost', 'Resource intensive', 'Learning curve for features', 'Can be slow on large codebases']
+                    },
+                    {
+                        name: 'Replit Agent',
+                        logo: '🔁',
+                        website: 'https://replit.com',
+                        category: 'Cloud IDE with AI agent + instant deploy',
+                        pricing: 'Free tier, $25/mo Replit Core',
+                        description: 'Browser-based development environment where an AI agent can build entire applications from descriptions. Includes instant deployment.',
+                        useCases: [
+                            { title: 'Rapid Prototyping', detail: 'Describe app → Agent builds it → instant preview → iterate → deploy with one click' },
+                            { title: 'Learning Projects', detail: 'Build projects to learn programming with AI assistance and explanations' },
+                            { title: 'Collaborative Development', detail: 'Multiple people working on code together with AI assistance' },
+                            { title: 'Quick Deployments', detail: 'Build something, deploy immediately, share URL—all in browser' }
+                        ],
+                        sampleProject: {
+                            title: 'Deployed Web Application',
+                            description: 'Describe your app idea → Replit Agent creates the project structure, writes code, sets up database → preview and iterate → deploy to public URL → share with users.',
+                            features: ['Natural language to app', 'Automatic environment setup', 'Database integration', 'Instant deployment', 'Collaboration', 'Version control']
+                        },
+                        resources: [
+                            { name: 'Replit Docs', url: 'https://docs.replit.com', type: 'Documentation', description: 'Platform documentation' },
+                            { name: 'Replit Ask', url: 'https://ask.replit.com', type: 'Community', description: 'Q&A community' },
+                            { name: 'Replit Templates', url: 'https://replit.com/templates', type: 'Templates', description: 'Starter templates' },
+                            { name: 'Replit Blog', url: 'https://blog.replit.com', type: 'Blog', description: 'Updates and tutorials' }
+                        ],
+                        strengths: ['Zero local setup', 'Instant deployment', 'Collaborative features', 'Great for learning', 'Browser-based'],
+                        limitations: ['Cloud-only development', 'Resource limits on free tier', 'Less IDE features than Cursor', 'Agent can be unpredictable', 'Vendor lock-in for deployment']
+                    },
+                    {
+                        name: 'v0 by Vercel',
+                        logo: '▲',
+                        website: 'https://v0.dev',
+                        category: 'UI component generation',
+                        pricing: 'Free tier, credits-based premium',
+                        description: 'Generate React UI components from text descriptions or images. Uses shadcn/ui components and Tailwind CSS for production-ready code.',
+                        useCases: [
+                            { title: 'Dashboard UIs', detail: 'Describe or sketch dashboard → v0 generates component → refine in chat → copy to project' },
+                            { title: 'Screenshot to Code', detail: 'Upload UI screenshot → v0 recreates it as React components' },
+                            { title: 'Component Library', detail: 'Generate consistent components for your design system' },
+                            { title: 'Rapid UI Iteration', detail: 'Try multiple UI approaches quickly before committing to implementation' }
+                        ],
+                        sampleProject: {
+                            title: 'SaaS Dashboard Interface',
+                            description: 'Describe your dashboard needs → v0 generates navigation, cards, charts, tables, and forms → refine layout and styling through chat → export to your Next.js project.',
+                            features: ['Text to UI', 'Image to code', 'shadcn/ui components', 'Tailwind styling', 'Iterative refinement', 'Code export']
+                        },
+                        resources: [
+                            { name: 'v0 Documentation', url: 'https://v0.dev/docs', type: 'Documentation', description: 'How to use v0' },
+                            { name: 'v0 Explore', url: 'https://v0.dev/explore', type: 'Examples', description: 'Community generations' },
+                            { name: 'shadcn/ui', url: 'https://ui.shadcn.com', type: 'Component Library', description: 'Underlying component library' }
+                        ],
+                        strengths: ['Best UI generation', 'Vercel/Next.js ecosystem', 'shadcn/ui native', 'Production-ready output', 'Fast iteration'],
+                        limitations: ['Frontend/UI only', 'Credit system limits usage', 'React/Next.js focused', 'No backend', 'Can be inconsistent']
+                    },
+                    {
+                        name: 'Bolt.new',
+                        logo: '⚡',
+                        website: 'https://bolt.new',
+                        category: 'Full-stack app generation',
+                        pricing: 'Free tier, token-based premium',
+                        description: 'Generate and run full-stack web applications entirely in the browser. Powered by StackBlitz WebContainers technology.',
+                        useCases: [
+                            { title: 'App Scaffolding', detail: 'Describe application → Bolt generates full project with frontend, API routes, database' },
+                            { title: 'Rapid Prototyping', detail: 'Test ideas quickly with working full-stack apps, no setup required' },
+                            { title: 'Learning Full-Stack', detail: 'See how frontend, backend, and database work together' },
+                            { title: 'Demo Applications', detail: 'Create working demos for presentations or pitches' }
+                        ],
+                        sampleProject: {
+                            title: 'SaaS Starter Application',
+                            description: 'Describe your SaaS → Bolt generates Next.js app with authentication, database schema, API routes, dashboard, and billing integration → iterate on features → deploy.',
+                            features: ['Full-stack generation', 'Browser-based runtime', 'Real-time preview', 'Database integration', 'Authentication', 'Deployment options']
+                        },
+                        resources: [
+                            { name: 'Bolt.new', url: 'https://bolt.new', type: 'Platform', description: 'Main platform' },
+                            { name: 'StackBlitz Docs', url: 'https://developer.stackblitz.com', type: 'Documentation', description: 'Underlying technology docs' },
+                            { name: 'WebContainers', url: 'https://webcontainers.io', type: 'Technology', description: 'How it works' }
+                        ],
+                        strengths: ['Full-stack in browser', 'No environment setup', 'Instant preview', 'Modern stack (Next.js)', 'Great for prototypes'],
+                        limitations: ['Token consumption', 'Complex apps need iteration', 'Limited language support', 'Browser resource limits', 'Can be unpredictable']
+                    },
+                    {
+                        name: 'Claude Code',
+                        logo: '💻',
+                        website: 'https://docs.anthropic.com/en/docs/claude-code',
+                        category: 'Terminal-based coding agent',
+                        pricing: 'API usage-based (Claude API)',
+                        description: 'Agentic coding tool that runs in your terminal. Can read/write files, execute commands, search codebases, and iterate on complex changes.',
+                        useCases: [
+                            { title: 'Complex Refactoring', detail: 'Describe refactoring goal → Claude Code plans changes → modifies files across codebase → runs tests' },
+                            { title: 'Feature Implementation', detail: 'Describe feature → agent creates files, writes code, integrates with existing code → iterate' },
+                            { title: 'Bug Investigation', detail: 'Describe bug → agent searches codebase, identifies cause, proposes and implements fix' },
+                            { title: 'Code Migration', detail: 'Migrate patterns, update dependencies, modernize code across entire project' }
+                        ],
+                        sampleProject: {
+                            title: 'API Integration Project',
+                            description: 'Add a new vendor integration to your security tool: Claude Code analyzes existing integrations, creates new adapter following patterns, writes tests, updates documentation, and commits changes.',
+                            features: ['File read/write', 'Command execution', 'Codebase search', 'Git integration', 'Multi-file changes', 'Iterative refinement']
+                        },
+                        resources: [
+                            { name: 'Claude Code Docs', url: 'https://docs.anthropic.com/en/docs/claude-code', type: 'Documentation', description: 'Official documentation' },
+                            { name: 'Claude Code GitHub', url: 'https://github.com/anthropics/claude-code', type: 'Source', description: 'GitHub repository' },
+                            { name: 'Anthropic Discord', url: 'https://discord.gg/anthropic', type: 'Community', description: 'Community support' }
+                        ],
+                        strengths: ['Terminal-native workflow', 'Full filesystem access', 'Agentic capabilities', 'Works with any codebase', 'Powerful for complex tasks'],
+                        limitations: ['API costs can add up', 'Requires CLI comfort', 'Newer tool', 'Can be slow on big tasks', 'Requires good prompting']
+                    },
+                    {
+                        name: 'Lovable',
+                        logo: '💜',
+                        website: 'https://lovable.dev',
+                        category: 'Conversational full-stack development',
+                        pricing: 'Free tier, $20-100/mo',
+                        description: 'Build full-stack applications through conversation. Focuses on making AI-assisted coding accessible to non-developers.',
+                        useCases: [
+                            { title: 'MVP Development', detail: 'Describe product → Lovable builds working app → iterate through chat → deploy' },
+                            { title: 'Internal Tools', detail: 'Build custom tools for your team without coding experience' },
+                            { title: 'Landing Pages', detail: 'Create and deploy landing pages with forms and integrations' },
+                            { title: 'Simple SaaS', detail: 'Build basic SaaS products with auth, database, and payments' }
+                        ],
+                        sampleProject: {
+                            title: 'Customer Feedback Tool',
+                            description: 'Describe a feedback collection tool → Lovable builds submission form, admin dashboard, analytics, email notifications → deploy and share with customers.',
+                            features: ['Conversational building', 'Full-stack apps', 'Database included', 'Authentication', 'Deployment', 'Iteration through chat']
+                        },
+                        resources: [
+                            { name: 'Lovable Docs', url: 'https://docs.lovable.dev', type: 'Documentation', description: 'Platform documentation' },
+                            { name: 'Lovable Discord', url: 'https://discord.gg/lovable', type: 'Community', description: 'Community Discord' }
+                        ],
+                        strengths: ['Very accessible', 'Good for non-developers', 'Full-stack output', 'Deployment included', 'Nice UX'],
+                        limitations: ['Limited customization', 'Can be unpredictable', 'Newer platform', 'Less powerful than Cursor', 'Simpler apps only']
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: 'Agent SDKs & Frameworks',
+                tagline: 'Build Your Own AI',
+                color: '#ec4899',
+                lightColor: '#fce7f3',
+                complexity: 'Advanced',
+                control: 'Full',
+                timeToFirst: '1-2 hours',
+                learningCurve: '2-4 weeks',
+                bestFor: 'Production AI products, complex multi-agent systems, custom enterprise solutions, maximum control and customization',
+                description: 'Programmatic frameworks for building sophisticated AI agent systems with code-level control over prompts, tools, memory, and orchestration.',
+                typicalUsers: ['Technical Product Builders', 'AI/ML Engineers', 'Backend Developers', 'Startups Building AI Products', 'Enterprise AI Teams'],
+                tools: [
+                    {
+                        name: 'Claude Agent SDK',
+                        logo: '🤖',
+                        website: 'https://docs.anthropic.com/en/docs/agents-and-tools/claude-agent-sdk',
+                        category: 'First-party Anthropic agent framework',
+                        pricing: 'API usage-based (Claude API pricing)',
+                        description: 'Official Anthropic SDK for building production-grade AI agents with Claude. Includes tool use, multi-turn conversations, and agentic workflows.',
+                        useCases: [
+                            { title: 'Research Agents', detail: 'Agent that can search the web, read documents, synthesize findings, and produce reports with citations' },
+                            { title: 'Task Automation Agents', detail: 'Agents that plan multi-step tasks, use tools, handle errors, and complete complex workflows' },
+                            { title: 'Domain Expert Systems', detail: 'Specialized agents with custom tools for specific domains (security, legal, medical, etc.)' },
+                            { title: 'Customer-Facing AI', detail: 'Production chatbots with tool use, knowledge retrieval, and action capabilities' }
+                        ],
+                        sampleProject: {
+                            title: 'Security Research Agent',
+                            description: 'AI agent that takes a CVE or threat topic, searches multiple threat intel sources, analyzes findings, maps to MITRE ATT&CK, and generates a briefing with citations and recommendations.',
+                            features: ['Web search tool', 'Document analysis', 'MITRE ATT&CK integration', 'Citation generation', 'Structured output', 'Multi-step planning']
+                        },
+                        resources: [
+                            { name: 'Agent SDK Documentation', url: 'https://docs.anthropic.com/en/docs/agents-and-tools/claude-agent-sdk', type: 'Documentation', description: 'Official SDK documentation' },
+                            { name: 'Tool Use Guide', url: 'https://docs.anthropic.com/en/docs/agents-and-tools/tool-use', type: 'Guide', description: 'How to build tools for Claude' },
+                            { name: 'Anthropic Cookbook', url: 'https://github.com/anthropics/anthropic-cookbook', type: 'Examples', description: 'Code examples and patterns' },
+                            { name: 'Computer Use', url: 'https://docs.anthropic.com/en/docs/agents-and-tools/computer-use', type: 'Feature', description: 'Claude controlling a computer' }
+                        ],
+                        strengths: ['First-party Anthropic SDK', 'Production-grade', 'Best Claude integration', 'Well-documented', 'Active development'],
+                        limitations: ['Claude-only (no other models)', 'Requires Python knowledge', 'Newer than LangChain', 'Smaller ecosystem', 'API costs']
+                    },
+                    {
+                        name: 'LangChain / LangGraph',
+                        logo: '🦜',
+                        website: 'https://python.langchain.com',
+                        category: 'Most popular agent/LLM framework',
+                        pricing: 'Open source, LangSmith paid observability',
+                        description: 'The most widely adopted framework for building LLM applications. LangChain for components, LangGraph for complex agent workflows with state management.',
+                        useCases: [
+                            { title: 'RAG Applications', detail: 'Document ingestion → chunking → embedding → vector store → retrieval → generation with citations' },
+                            { title: 'Complex Agent Workflows', detail: 'Multi-step agents with state, branching, human-in-the-loop, and error recovery' },
+                            { title: 'Multi-Model Orchestration', detail: 'Use different models for different tasks, route based on requirements' },
+                            { title: 'Production Chatbots', detail: 'Conversational agents with memory, tools, and knowledge bases' }
+                        ],
+                        sampleProject: {
+                            title: 'Document Q&A with RAG',
+                            description: 'Build a system that ingests your documentation, creates embeddings, stores in a vector database, and answers questions with accurate citations to source documents.',
+                            features: ['Document ingestion', 'Chunking strategies', 'Multiple embedding models', 'Vector store integration', 'Retrieval strategies', 'Citation generation']
+                        },
+                        resources: [
+                            { name: 'LangChain Docs', url: 'https://python.langchain.com/docs', type: 'Documentation', description: 'Comprehensive documentation' },
+                            { name: 'LangGraph Docs', url: 'https://langchain-ai.github.io/langgraph', type: 'Documentation', description: 'Agent workflow framework' },
+                            { name: 'LangChain Templates', url: 'https://templates.langchain.com', type: 'Templates', description: 'Starter templates' },
+                            { name: 'LangSmith', url: 'https://smith.langchain.com', type: 'Observability', description: 'Debugging and monitoring' },
+                            { name: 'LangChain Hub', url: 'https://smith.langchain.com/hub', type: 'Prompts', description: 'Prompt repository' }
+                        ],
+                        strengths: ['Largest ecosystem', 'Model-agnostic', 'Great for RAG', 'Active community', 'Comprehensive tooling'],
+                        limitations: ['Can be over-abstracted', 'Rapid changes/breaking updates', 'Debugging can be hard', 'Learning curve', 'Documentation can lag']
+                    },
+                    {
+                        name: 'CrewAI',
+                        logo: '👥',
+                        website: 'https://www.crewai.com',
+                        category: 'Multi-agent collaboration framework',
+                        pricing: 'Open source, Enterprise paid',
+                        description: 'Framework for building teams of AI agents that collaborate with defined roles, goals, and task delegation. Easy to understand mental model.',
+                        useCases: [
+                            { title: 'Content Production Team', detail: 'Researcher agent → Writer agent → Editor agent work together to produce polished content' },
+                            { title: 'Analysis Crew', detail: 'Data collector, analyst, and reporter agents collaborate on research projects' },
+                            { title: 'Software Development Team', detail: 'Architect, developer, and QA agents work together on coding tasks' },
+                            { title: 'Customer Research', detail: 'Multiple specialized agents research different aspects and synthesize findings' }
+                        ],
+                        sampleProject: {
+                            title: 'Competitive Intelligence Crew',
+                            description: 'Team of agents: Researcher finds competitor information, Analyst evaluates positioning, Strategist identifies opportunities, Writer produces the final report. Each agent has specialized skills and they collaborate.',
+                            features: ['Role-based agents', 'Task delegation', 'Agent collaboration', 'Shared context', 'Sequential/parallel execution', 'Human feedback']
+                        },
+                        resources: [
+                            { name: 'CrewAI Docs', url: 'https://docs.crewai.com', type: 'Documentation', description: 'Official documentation' },
+                            { name: 'CrewAI GitHub', url: 'https://github.com/crewAIInc/crewAI', type: 'Source', description: 'Open source repository' },
+                            { name: 'CrewAI Examples', url: 'https://github.com/crewAIInc/crewAI-examples', type: 'Examples', description: 'Example implementations' },
+                            { name: 'CrewAI Discord', url: 'https://discord.gg/crewai', type: 'Community', description: 'Community Discord' }
+                        ],
+                        strengths: ['Intuitive multi-agent model', 'Easy role definition', 'Good for collaboration patterns', 'Growing community', 'Enterprise features'],
+                        limitations: ['Less flexible than LangGraph', 'Newer framework', 'Limited advanced features', 'Can be verbose', 'Debugging multi-agent is hard']
+                    },
+                    {
+                        name: 'AutoGen',
+                        logo: '🔬',
+                        website: 'https://microsoft.github.io/autogen',
+                        category: 'Multi-agent conversation framework (Microsoft)',
+                        pricing: 'Open source',
+                        description: 'Microsoft\'s framework for building multi-agent conversational systems. Agents communicate through conversation with support for human-in-the-loop.',
+                        useCases: [
+                            { title: 'Code Generation & Review', detail: 'Coder agent writes code, Critic reviews, they iterate until quality criteria met' },
+                            { title: 'Research Discussions', detail: 'Multiple expert agents discuss a topic from different perspectives' },
+                            { title: 'Teaching Systems', detail: 'Tutor agent and student agent interact for personalized learning' },
+                            { title: 'Approval Workflows', detail: 'Agents prepare work, human reviews, agents incorporate feedback' }
+                        ],
+                        sampleProject: {
+                            title: 'Code Development Team',
+                            description: 'Coder agent receives requirements, writes implementation, Reviewer agent examines code for bugs and style, they discuss improvements, iterate until the code passes all checks and human approves.',
+                            features: ['Conversational agents', 'Human-in-the-loop', 'Code execution', 'Multi-turn dialogue', 'Flexible topologies', 'Group chat']
+                        },
+                        resources: [
+                            { name: 'AutoGen Docs', url: 'https://microsoft.github.io/autogen', type: 'Documentation', description: 'Official documentation' },
+                            { name: 'AutoGen Studio', url: 'https://microsoft.github.io/autogen/docs/autogen-studio', type: 'Tool', description: 'Visual interface for AutoGen' },
+                            { name: 'AutoGen GitHub', url: 'https://github.com/microsoft/autogen', type: 'Source', description: 'Open source repository' },
+                            { name: 'AutoGen Samples', url: 'https://github.com/microsoft/autogen/tree/main/notebook', type: 'Examples', description: 'Notebook examples' }
+                        ],
+                        strengths: ['Microsoft backing', 'Conversation-based', 'AutoGen Studio UI', 'Good for human-in-loop', 'Research-driven'],
+                        limitations: ['API changes frequently', 'Complex configuration', 'Can be verbose', 'Conversation model limits some patterns', 'Learning curve']
+                    },
+                    {
+                        name: 'Haystack',
+                        logo: '🔍',
+                        website: 'https://haystack.deepset.ai',
+                        category: 'RAG and search-focused framework',
+                        pricing: 'Open source, deepset Cloud paid',
+                        description: 'Framework focused on building production-grade search and RAG systems. Pipeline-based architecture optimized for document processing and retrieval.',
+                        useCases: [
+                            { title: 'Semantic Search', detail: 'Build search systems that understand meaning, not just keywords' },
+                            { title: 'Document Q&A', detail: 'Answer questions from large document collections with citations' },
+                            { title: 'Knowledge Base', detail: 'Turn your documents into a queryable knowledge system' },
+                            { title: 'Hybrid Search', detail: 'Combine keyword and semantic search for best results' }
+                        ],
+                        sampleProject: {
+                            title: 'Security Knowledge Base',
+                            description: 'Index your threat reports, runbooks, and documentation. Security team can ask questions and get answers with citations to relevant documents. Supports hybrid search and filtering.',
+                            features: ['Document indexing', 'Multiple retrievers', 'Hybrid search', 'Metadata filtering', 'Answer generation', 'Citation extraction']
+                        },
+                        resources: [
+                            { name: 'Haystack Docs', url: 'https://docs.haystack.deepset.ai', type: 'Documentation', description: 'Official documentation' },
+                            { name: 'Haystack Tutorials', url: 'https://haystack.deepset.ai/tutorials', type: 'Tutorials', description: 'Step-by-step tutorials' },
+                            { name: 'deepset Cloud', url: 'https://cloud.deepset.ai', type: 'Managed', description: 'Managed Haystack service' },
+                            { name: 'Haystack Discord', url: 'https://discord.gg/haystack', type: 'Community', description: 'Community Discord' }
+                        ],
+                        strengths: ['Best for search/RAG', 'Pipeline architecture', 'Production-ready', 'Strong evaluation tools', 'Good documentation'],
+                        limitations: ['Search-focused (less general)', 'Smaller ecosystem than LangChain', 'Less agent-oriented', 'Steeper learning curve', 'Complex for simple uses']
+                    },
+                    {
+                        name: 'Semantic Kernel',
+                        logo: '🧬',
+                        website: 'https://learn.microsoft.com/semantic-kernel',
+                        category: 'Enterprise SDK (.NET, Python, Java)',
+                        pricing: 'Open source (Microsoft)',
+                        description: 'Microsoft\'s SDK for building AI into enterprise applications. Strong .NET support, plugin architecture, and integration with Microsoft ecosystem.',
+                        useCases: [
+                            { title: 'Enterprise AI Integration', detail: 'Add AI capabilities to existing .NET/Java enterprise applications' },
+                            { title: 'Plugin Systems', detail: 'Build AI systems with modular, reusable plugins' },
+                            { title: 'Copilot Experiences', detail: 'Create copilot-style assistants for enterprise software' },
+                            { title: 'Microsoft Ecosystem', detail: 'AI features integrated with SharePoint, Teams, Dynamics' }
+                        ],
+                        sampleProject: {
+                            title: 'Enterprise Copilot',
+                            description: 'Build an AI assistant for your enterprise app: connects to internal APIs, understands business context, takes actions on behalf of users, integrates with existing authentication.',
+                            features: ['Plugin architecture', 'Memory/context management', 'Planner for multi-step', 'Multiple language support', 'Enterprise auth', 'Microsoft integrations']
+                        },
+                        resources: [
+                            { name: 'Semantic Kernel Docs', url: 'https://learn.microsoft.com/semantic-kernel', type: 'Documentation', description: 'Official Microsoft docs' },
+                            { name: 'SK GitHub', url: 'https://github.com/microsoft/semantic-kernel', type: 'Source', description: 'Open source repository' },
+                            { name: 'SK Samples', url: 'https://github.com/microsoft/semantic-kernel/tree/main/samples', type: 'Examples', description: 'Sample implementations' },
+                            { name: 'SK Discord', url: 'https://discord.gg/semantic-kernel', type: 'Community', description: 'Community Discord' }
+                        ],
+                        strengths: ['.NET first-class support', 'Enterprise patterns', 'Microsoft ecosystem', 'Plugin architecture', 'Multi-language'],
+                        limitations: ['Enterprise-focused', 'Less community content', 'Verbose API', 'Microsoft-oriented', 'Fewer tutorials']
+                    }
+                ]
+            }
+        ];
+
+        const quickReferenceData = [
+            { goal: 'Build a customer portal', start: 'No-Code', tool: 'Softr', next: 'Bubble → Custom code' },
+            { goal: 'Automate repetitive tasks', start: 'Automation', tool: 'Zapier', next: 'Make → n8n' },
+            { goal: 'Create an AI chatbot', start: 'AI Agents', tool: 'OpenAI GPT', next: 'Botpress → Agent SDK' },
+            { goal: 'Build a custom web app', start: 'AI Coding', tool: 'Bolt.new', next: 'Cursor → Full dev' },
+            { goal: 'Production AI system', start: 'Agent SDKs', tool: 'Claude Agent SDK', next: 'LangGraph → Custom' },
+            { goal: 'Internal dashboard', start: 'Low-Code', tool: 'Retool', next: 'Custom React app' },
+            { goal: 'Marketing website', start: 'No-Code', tool: 'Webflow', next: 'Framer → Next.js' },
+            { goal: 'Mobile field app', start: 'No-Code', tool: 'Glide', next: 'Adalo → React Native' },
+            { goal: 'Document processing', start: 'Automation', tool: 'Make', next: 'n8n → Custom code' },
+            { goal: 'Sales research agent', start: 'AI Agents', tool: 'Relevance AI', next: 'Claude Agent SDK' },
+            { goal: 'Multi-agent system', start: 'Agent SDKs', tool: 'CrewAI', next: 'LangGraph → Custom' },
+            { goal: 'RAG / semantic search', start: 'Agent SDKs', tool: 'Haystack', next: 'Custom implementation' }
+        ];
+
+        // ============================================
+        // COMPONENTS
+        // ============================================
+
+        const App = () => {
+            const [activeCategory, setActiveCategory] = useState(null);
+            const [activeTool, setActiveTool] = useState(null);
+            const [activeSection, setActiveSection] = useState('overview');
+
+            const scrollToSection = (sectionId) => {
+                setActiveSection(sectionId);
+                document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return (
+                <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc' }}>
+                    {/* Header */}
+                    <header style={{ 
+                        backgroundColor: 'white', 
+                        borderBottom: '1px solid #e2e8f0',
+                        position: 'sticky',
+                        top: 0,
+                        zIndex: 100
+                    }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 24px' }}>
+                            <h1 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1e293b' }}>
+                                Non-Developer App Building: Complete Tools Landscape
+                            </h1>
+                            <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>
+                                5 categories • 30+ tools • Detailed use cases & resources
+                            </p>
+                        </div>
+                        <nav style={{ 
+                            maxWidth: '1200px', 
+                            margin: '0 auto', 
+                            padding: '0 24px 12px 24px',
+                            display: 'flex',
+                            gap: '8px',
+                            flexWrap: 'wrap'
+                        }}>
+                            {['overview', 'categories', 'quick-reference', 'vibe-vs-proper'].map(section => (
+                                <button
+                                    key={section}
+                                    onClick={() => scrollToSection(section)}
+                                    style={{
+                                        padding: '6px 14px',
+                                        border: 'none',
+                                        borderRadius: '6px',
+                                        fontSize: '13px',
+                                        fontWeight: '500',
+                                        cursor: 'pointer',
+                                        backgroundColor: activeSection === section ? '#3b82f6' : '#f1f5f9',
+                                        color: activeSection === section ? 'white' : '#475569'
+                                    }}
+                                >
+                                    {section.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                                </button>
+                            ))}
+                        </nav>
+                    </header>
+
+                    <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px' }}>
+                        {/* Overview Section */}
+                        <section id="overview" style={{ marginBottom: '48px' }}>
+                            <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px', color: '#1e293b' }}>
+                                The Complexity → Control Spectrum
+                            </h2>
+                            
+                            <div style={{
+                                backgroundColor: 'white',
+                                borderRadius: '12px',
+                                padding: '24px',
+                                marginBottom: '24px',
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                            }}>
+                                {/* Spectrum bar */}
+                                <div style={{ marginBottom: '20px' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '12px', color: '#64748b' }}>
+                                        <span>← Easier to Start</span>
+                                        <span>More Control →</span>
+                                    </div>
+                                    <div style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(5, 1fr)',
+                                        gap: '4px',
+                                        height: '12px',
+                                        borderRadius: '6px',
+                                        overflow: 'hidden'
+                                    }}>
+                                        {categories.map(cat => (
+                                            <div
+                                                key={cat.id}
+                                                style={{
+                                                    backgroundColor: cat.color,
+                                                    cursor: 'pointer'
+                                                }}
+                                                onClick={() => scrollToSection('categories')}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Category summary cards */}
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+                                    {categories.map(cat => (
+                                        <div
+                                            key={cat.id}
+                                            onClick={() => {
+                                                setActiveCategory(cat.id);
+                                                scrollToSection('categories');
+                                            }}
+                                            style={{
+                                                padding: '16px',
+                                                borderRadius: '8px',
+                                                border: `2px solid ${cat.color}30`,
+                                                backgroundColor: cat.lightColor,
+                                                cursor: 'pointer',
+                                                transition: 'all 0.2s'
+                                            }}
+                                        >
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                                                <div style={{
+                                                    width: '24px',
+                                                    height: '24px',
+                                                    borderRadius: '6px',
+                                                    backgroundColor: cat.color,
+                                                    color: 'white',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    fontWeight: '700',
+                                                    fontSize: '12px'
+                                                }}>
+                                                    {cat.id}
+                                                </div>
+                                                <div style={{ fontWeight: '600', fontSize: '14px', color: '#1e293b' }}>
+                                                    {cat.name}
+                                                </div>
+                                            </div>
+                                            <div style={{ fontSize: '12px', color: cat.color, fontWeight: '500', marginBottom: '4px' }}>
+                                                {cat.tagline}
+                                            </div>
+                                            <div style={{ fontSize: '12px', color: '#64748b' }}>
+                                                {cat.tools.length} tools • {cat.timeToFirst} to start
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Key insight */}
+                            <div style={{
+                                padding: '20px',
+                                backgroundColor: '#fef3c7',
+                                borderRadius: '12px',
+                                border: '1px solid #fde68a'
+                            }}>
+                                <h3 style={{ margin: '0 0 8px 0', fontSize: '15px', color: '#92400e' }}>
+                                    💡 The Composability Principle
+                                </h3>
+                                <p style={{ fontSize: '14px', color: '#92400e', margin: 0, lineHeight: '1.6' }}>
+                                    These categories aren't mutually exclusive. The most effective builders <strong>combine tools across categories</strong>: 
+                                    use Zapier to connect a Bubble app to an AI agent built with Claude Agent SDK, 
+                                    all developed iteratively with Cursor. Start where you're comfortable, graduate as you hit limits.
+                                </p>
+                            </div>
+                        </section>
+
+                        {/* Categories Section */}
+                        <section id="categories" style={{ marginBottom: '48px' }}>
+                            <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px', color: '#1e293b' }}>
+                                Detailed Category Breakdown
+                            </h2>
+
+                            {categories.map(cat => (
+                                <CategorySection 
+                                    key={cat.id} 
+                                    category={cat} 
+                                    isExpanded={activeCategory === cat.id}
+                                    onToggle={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
+                                    activeTool={activeTool}
+                                    setActiveTool={setActiveTool}
+                                />
+                            ))}
+                        </section>
+
+                        {/* Quick Reference Section */}
+                        <section id="quick-reference" style={{ marginBottom: '48px' }}>
+                            <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px', color: '#1e293b' }}>
+                                Quick Reference: When to Use What
+                            </h2>
+
+                            <div style={{
+                                backgroundColor: 'white',
+                                borderRadius: '12px',
+                                padding: '24px',
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                            }}>
+                                <div className="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>If you want to...</th>
+                                                <th>Start with</th>
+                                                <th>Recommended Tool</th>
+                                                <th>Graduate to</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {quickReferenceData.map((row, i) => (
+                                                <tr key={i}>
+                                                    <td style={{ fontWeight: '500' }}>{row.goal}</td>
+                                                    <td>
+                                                        <span style={{
+                                                            padding: '4px 8px',
+                                                            borderRadius: '4px',
+                                                            fontSize: '12px',
+                                                            fontWeight: '500',
+                                                            backgroundColor: categories.find(c => c.name.includes(row.start.split(' ')[0]))?.lightColor || '#f1f5f9',
+                                                            color: categories.find(c => c.name.includes(row.start.split(' ')[0]))?.color || '#475569'
+                                                        }}>
+                                                            {row.start}
+                                                        </span>
+                                                    </td>
+                                                    <td style={{ color: '#3b82f6', fontWeight: '500' }}>{row.tool}</td>
+                                                    <td style={{ color: '#64748b', fontSize: '13px' }}>{row.next}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Vibe Coding vs Proper Section */}
+                        <section id="vibe-vs-proper" style={{ marginBottom: '48px' }}>
+                            <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px', color: '#1e293b' }}>
+                                Vibe Coding vs. Proper AI-Assisted Development
+                            </h2>
+
+                            <div style={{
+                                backgroundColor: 'white',
+                                borderRadius: '12px',
+                                padding: '24px',
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                                marginBottom: '24px'
+                            }}>
+                                <div className="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th style={{ width: '18%' }}>Dimension</th>
+                                                <th style={{ width: '41%', color: '#dc2626' }}>🎲 Vibe Coding</th>
+                                                <th style={{ width: '41%', color: '#059669' }}>🎯 Proper AI-Assisted</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {[
+                                                { dim: 'Starting Point', vibe: 'Vague prompt: "Build me a dashboard"', proper: 'Detailed spec: requirements, constraints, tech stack, edge cases, acceptance criteria' },
+                                                { dim: 'Context Provided', vibe: 'Minimal — hopes the LLM "figures it out"', proper: 'Rich context: SKILL files, architecture docs, coding standards, example patterns' },
+                                                { dim: 'Iteration Style', vibe: '"No, that\'s wrong. Fix it." → "Still broken" → "Try again"', proper: 'Structured feedback with file refs, error logs, expected vs. actual behavior' },
+                                                { dim: 'Testing', vibe: 'Manual spot-checking at the end (if at all)', proper: 'Tests at each stage: unit, integration, edge case validation' },
+                                                { dim: 'Context Engineering', vibe: 'None — raw conversation only', proper: 'CLAUDE.md, .cursorrules, memory files, repomix, tree-sitter' },
+                                                { dim: 'Error Handling', vibe: 'Copy-paste error → "Fix this" → pray', proper: 'Stack trace + relevant code + environment + what you\'ve tried' },
+                                                { dim: 'Code Quality', vibe: 'Degrades with each iteration (context pollution)', proper: 'Maintained or improves (clean context, consistent patterns)' },
+                                                { dim: 'Time Spent', vibe: '2 hours of back-and-forth for a 20-line function', proper: '20 minutes with proper setup, right in 1-2 iterations' },
+                                                { dim: 'Mental Model', vibe: 'LLM as magic oracle that should "just know"', proper: 'LLM as capable collaborator needing proper briefing' },
+                                                { dim: 'Outcome', vibe: 'Fragile code that "works" but no one understands', proper: 'Maintainable code with clear rationale and test coverage' }
+                                            ].map((row, i) => (
+                                                <tr key={i}>
+                                                    <td style={{ fontWeight: '600', color: '#334155' }}>{row.dim}</td>
+                                                    <td style={{ color: '#64748b' }}>{row.vibe}</td>
+                                                    <td style={{ color: '#475569' }}>{row.proper}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {/* Context Engineering Tools */}
+                            <div style={{
+                                backgroundColor: 'white',
+                                borderRadius: '12px',
+                                padding: '24px',
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                            }}>
+                                <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', color: '#1e293b' }}>
+                                    Context Engineering Tools
+                                </h3>
+                                <div className="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Tool</th>
+                                                <th>Purpose</th>
+                                                <th>When to Use</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {[
+                                                { tool: 'CLAUDE.md / CURSORRULES', purpose: 'Project-level AI instructions, coding standards, architectural decisions', when: 'Every project — baseline context for all AI interactions' },
+                                                { tool: 'repomix / context7', purpose: 'Bundle relevant repo files into a single context payload', when: 'When AI needs to understand multiple files at once' },
+                                                { tool: 'SKILL.md files', purpose: 'Domain-specific best practices and patterns', when: 'Specialized domains: OCSF mapping, VRL patterns, API conventions' },
+                                                { tool: 'aider / Claude Code', purpose: 'Git-aware context, automatic file inclusion, diff-based editing', when: 'Complex multi-file changes, refactoring, feature implementation' },
+                                                { tool: 'Tree-sitter queries', purpose: 'Extract only relevant AST nodes (signatures, definitions)', when: 'Large codebases where full files exceed context limits' },
+                                                { tool: 'Memory / scratchpad files', purpose: 'Persistent context across sessions', when: 'Long-running projects with accumulated decisions' },
+                                                { tool: 'Test fixtures + golden outputs', purpose: 'Concrete examples of expected behavior', when: 'Any feature where correctness is verifiable' }
+                                            ].map((row, i) => (
+                                                <tr key={i}>
+                                                    <td style={{ fontWeight: '600', color: '#4f46e5' }}>{row.tool}</td>
+                                                    <td>{row.purpose}</td>
+                                                    <td style={{ color: '#64748b', fontSize: '13px' }}>{row.when}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div style={{
+                                    marginTop: '20px',
+                                    padding: '16px',
+                                    backgroundColor: '#ecfdf5',
+                                    borderRadius: '8px',
+                                    borderLeft: '4px solid #10b981'
+                                }}>
+                                    <div style={{ fontWeight: '600', color: '#065f46', marginBottom: '4px' }}>
+                                        The Core Principle
+                                    </div>
+                                    <div style={{ fontSize: '14px', color: '#065f46' }}>
+                                        The quality of LLM output is directly proportional to the quality of context provided. 
+                                        Context engineering is the practice of systematically curating and structuring information 
+                                        to maximize AI effectiveness. <strong>Time spent on context = time saved on iteration.</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Footer */}
+                        <footer style={{
+                            textAlign: 'center',
+                            padding: '24px',
+                            color: '#64748b',
+                            fontSize: '13px'
+                        }}>
+                            <p>Built to help non-developers navigate the landscape of modern app-building tools.</p>
+                            <p style={{ marginTop: '8px' }}>
+                                Questions or feedback? Connect on <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            </p>
+                        </footer>
+                    </main>
+                </div>
+            );
+        };
+
+        // Category Section Component
+        const CategorySection = ({ category, isExpanded, onToggle, activeTool, setActiveTool }) => {
+            return (
+                <div style={{
+                    backgroundColor: 'white',
+                    borderRadius: '12px',
+                    marginBottom: '16px',
+                    overflow: 'hidden',
+                    border: isExpanded ? `2px solid ${category.color}` : '1px solid #e2e8f0',
+                    boxShadow: isExpanded ? `0 4px 12px ${category.color}15` : '0 1px 3px rgba(0,0,0,0.05)'
+                }}>
+                    {/* Header */}
+                    <div
+                        onClick={onToggle}
+                        style={{
+                            padding: '20px 24px',
+                            cursor: 'pointer',
+                            backgroundColor: isExpanded ? category.lightColor : 'white',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <div style={{
+                                width: '40px',
+                                height: '40px',
+                                borderRadius: '10px',
+                                backgroundColor: category.color,
+                                color: 'white',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontWeight: '700',
+                                fontSize: '18px'
+                            }}>
+                                {category.id}
+                            </div>
+                            <div>
+                                <div style={{ fontWeight: '600', fontSize: '18px', color: '#1e293b' }}>
+                                    {category.name}
+                                </div>
+                                <div style={{ fontSize: '14px', color: category.color, fontWeight: '500' }}>
+                                    {category.tagline} • {category.tools.length} tools
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <div style={{ textAlign: 'right', fontSize: '13px', color: '#64748b' }}>
+                                <div><strong>Complexity:</strong> {category.complexity}</div>
+                                <div><strong>Time to first:</strong> {category.timeToFirst}</div>
+                            </div>
+                            <span style={{
+                                fontSize: '20px',
+                                color: '#94a3b8',
+                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                                transition: 'transform 0.2s'
+                            }}>
+                                ▼
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Expanded Content */}
+                    {isExpanded && (
+                        <div style={{ padding: '24px' }}>
+                            {/* Description */}
+                            <p style={{ fontSize: '15px', color: '#475569', marginBottom: '20px', lineHeight: '1.6' }}>
+                                {category.description}
+                            </p>
+
+                            {/* Meta info */}
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                                gap: '12px',
+                                padding: '16px',
+                                backgroundColor: category.lightColor,
+                                borderRadius: '8px',
+                                marginBottom: '24px'
+                            }}>
+                                <div>
+                                    <div style={{ fontSize: '11px', fontWeight: '600', color: '#64748b' }}>COMPLEXITY</div>
+                                    <div style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b' }}>{category.complexity}</div>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '11px', fontWeight: '600', color: '#64748b' }}>CONTROL LEVEL</div>
+                                    <div style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b' }}>{category.control}</div>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '11px', fontWeight: '600', color: '#64748b' }}>TIME TO FIRST RESULT</div>
+                                    <div style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b' }}>{category.timeToFirst}</div>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '11px', fontWeight: '600', color: '#64748b' }}>LEARNING CURVE</div>
+                                    <div style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b' }}>{category.learningCurve}</div>
+                                </div>
+                            </div>
+
+                            {/* Typical Users */}
+                            <div style={{ marginBottom: '24px' }}>
+                                <div style={{ fontSize: '12px', fontWeight: '600', color: '#64748b', marginBottom: '8px' }}>
+                                    TYPICAL USERS
+                                </div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                    {category.typicalUsers.map((user, i) => (
+                                        <span key={i} style={{
+                                            padding: '4px 12px',
+                                            backgroundColor: '#f1f5f9',
+                                            borderRadius: '16px',
+                                            fontSize: '13px',
+                                            color: '#475569'
+                                        }}>
+                                            {user}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Best For */}
+                            <div style={{
+                                padding: '14px',
+                                backgroundColor: '#f0fdf4',
+                                borderRadius: '8px',
+                                borderLeft: `4px solid ${category.color}`,
+                                marginBottom: '24px'
+                            }}>
+                                <div style={{ fontSize: '12px', fontWeight: '600', color: category.color, marginBottom: '4px' }}>
+                                    BEST FOR
+                                </div>
+                                <div style={{ fontSize: '14px', color: '#1e293b' }}>{category.bestFor}</div>
+                            </div>
+
+                            {/* Tools */}
+                            <div style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b', marginBottom: '16px' }}>
+                                Tools in this Category
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                {category.tools.map(tool => (
+                                    <ToolCard 
+                                        key={tool.name}
+                                        tool={tool}
+                                        category={category}
+                                        isExpanded={activeTool === tool.name}
+                                        onToggle={() => setActiveTool(activeTool === tool.name ? null : tool.name)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // Tool Card Component
+        const ToolCard = ({ tool, category, isExpanded, onToggle }) => {
+            return (
+                <div style={{
+                    backgroundColor: '#fafafa',
+                    borderRadius: '10px',
+                    overflow: 'hidden',
+                    border: isExpanded ? `2px solid ${category.color}` : '1px solid #e2e8f0'
+                }}>
+                    {/* Tool Header */}
+                    <div
+                        onClick={onToggle}
+                        style={{
+                            padding: '16px 20px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            backgroundColor: isExpanded ? 'white' : '#fafafa'
+                        }}
+                    >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <span style={{ fontSize: '28px' }}>{tool.logo}</span>
+                            <div>
+                                <div style={{ fontWeight: '600', fontSize: '16px', color: '#1e293b' }}>
+                                    {tool.name}
+                                </div>
+                                <div style={{ fontSize: '13px', color: '#64748b' }}>{tool.category}</div>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ fontSize: '13px', color: category.color, fontWeight: '500' }}>
+                                {tool.pricing}
+                            </div>
+                            <span style={{
+                                color: '#94a3b8',
+                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                                transition: 'transform 0.2s'
+                            }}>
+                                ▼
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Expanded Tool Content */}
+                    {isExpanded && (
+                        <div style={{ padding: '20px', backgroundColor: 'white', borderTop: '1px solid #e2e8f0' }}>
+                            {/* Description */}
+                            <p style={{ fontSize: '14px', color: '#475569', marginBottom: '20px', lineHeight: '1.6' }}>
+                                {tool.description}
+                            </p>
+
+                            {/* Use Cases */}
+                            <div style={{ marginBottom: '20px' }}>
+                                <div style={{ fontSize: '12px', fontWeight: '600', color: '#64748b', marginBottom: '12px' }}>
+                                    USE CASES
+                                </div>
+                                <div style={{ display: 'grid', gap: '10px' }}>
+                                    {tool.useCases.map((uc, i) => (
+                                        <div key={i} style={{
+                                            padding: '12px',
+                                            backgroundColor: '#f8fafc',
+                                            borderRadius: '8px',
+                                            borderLeft: `3px solid ${category.color}`
+                                        }}>
+                                            <div style={{ fontWeight: '600', fontSize: '14px', color: '#1e293b', marginBottom: '4px' }}>
+                                                {uc.title}
+                                            </div>
+                                            <div style={{ fontSize: '13px', color: '#64748b' }}>{uc.detail}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Sample Project */}
+                            <div style={{ marginBottom: '20px' }}>
+                                <div style={{ fontSize: '12px', fontWeight: '600', color: '#64748b', marginBottom: '12px' }}>
+                                    SAMPLE PROJECT
+                                </div>
+                                <div style={{
+                                    padding: '16px',
+                                    backgroundColor: category.lightColor,
+                                    borderRadius: '8px',
+                                    border: `1px solid ${category.color}30`
+                                }}>
+                                    <div style={{ fontWeight: '600', fontSize: '15px', color: '#1e293b', marginBottom: '8px' }}>
+                                        {tool.sampleProject.title}
+                                    </div>
+                                    <div style={{ fontSize: '14px', color: '#475569', marginBottom: '12px', lineHeight: '1.5' }}>
+                                        {tool.sampleProject.description}
+                                    </div>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                        {tool.sampleProject.features.map((feature, i) => (
+                                            <span key={i} style={{
+                                                padding: '4px 10px',
+                                                backgroundColor: 'white',
+                                                borderRadius: '4px',
+                                                fontSize: '12px',
+                                                color: category.color,
+                                                fontWeight: '500'
+                                            }}>
+                                                {feature}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Resources */}
+                            <div style={{ marginBottom: '20px' }}>
+                                <div style={{ fontSize: '12px', fontWeight: '600', color: '#64748b', marginBottom: '12px' }}>
+                                    RESOURCES & DOCUMENTATION
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '8px' }}>
+                                    {tool.resources.map((resource, i) => (
+                                        <a
+                                            key={i}
+                                            href={resource.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                display: 'block',
+                                                padding: '12px',
+                                                backgroundColor: '#f8fafc',
+                                                borderRadius: '6px',
+                                                textDecoration: 'none',
+                                                border: '1px solid #e2e8f0',
+                                                transition: 'all 0.2s'
+                                            }}
+                                        >
+                                            <div style={{ fontWeight: '600', fontSize: '13px', color: '#3b82f6', marginBottom: '2px' }}>
+                                                {resource.name}
+                                            </div>
+                                            <div style={{ fontSize: '11px', color: '#94a3b8', marginBottom: '4px' }}>
+                                                {resource.type}
+                                            </div>
+                                            <div style={{ fontSize: '12px', color: '#64748b' }}>
+                                                {resource.description}
+                                            </div>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Strengths & Limitations */}
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                                <div>
+                                    <div style={{ fontSize: '12px', fontWeight: '600', color: '#10b981', marginBottom: '8px' }}>
+                                        ✓ STRENGTHS
+                                    </div>
+                                    <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '13px', color: '#374151' }}>
+                                        {tool.strengths.map((s, i) => (
+                                            <li key={i} style={{ marginBottom: '4px' }}>{s}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '12px', fontWeight: '600', color: '#f59e0b', marginBottom: '8px' }}>
+                                        ⚠ LIMITATIONS
+                                    </div>
+                                    <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '13px', color: '#374151' }}>
+                                        {tool.limitations.map((l, i) => (
+                                            <li key={i} style={{ marginBottom: '4px' }}>{l}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* Visit Website Button */}
+                            <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                                <a
+                                    href={tool.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: 'inline-block',
+                                        padding: '10px 24px',
+                                        backgroundColor: category.color,
+                                        color: 'white',
+                                        borderRadius: '8px',
+                                        textDecoration: 'none',
+                                        fontWeight: '500',
+                                        fontSize: '14px'
+                                    }}
+                                >
+                                    Visit {tool.name} →
+                                </a>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
